@@ -2413,3 +2413,12 @@ Binding(ALT+SHIFT+ARROW_LEFT,
 
 !ENTRY org.eclipse.wst.server.core 4 0 2016-07-15 10:17:11.534
 !MESSAGE Server Tomcat v7.0 Server at localhost failed to start.
+
+!ENTRY org.eclipse.wst.server.core 4 0 2016-07-15 10:36:12.893
+!MESSAGE Server Tomcat v7.0 Server at localhost failed to start.
+
+!ENTRY org.eclipse.wst.server.core 4 0 2016-07-15 10:36:41.649
+!MESSAGE Server Tomcat v7.0 Server at localhost failed to start.
+
+!ENTRY org.eclipse.wst.server.core 4 0 2016-07-15 10:38:20.875
+!MESSAGE Server Tomcat v7.0 Server at localhost failed to start.

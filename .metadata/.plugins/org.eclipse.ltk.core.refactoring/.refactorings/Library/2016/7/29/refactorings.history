@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;common&apos; to &apos;com.common&apos;&#x0D;&#x0A;- Original project: &apos;Library&apos;&#x0D;&#x0A;- Original element: &apos;Library/src/common&apos;&#x0D;&#x0A;- Renamed element: &apos;Library/src/com.common&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;common&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;common" name="com.common" qualified="false" references="true" stamp="1468549834153" textual="false" version="1.0"/>
+</session>
