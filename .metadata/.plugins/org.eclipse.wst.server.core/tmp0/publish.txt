@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Fri Jul 15 09:00:53 CST 2016
+org.eclipse.jst.jee.server\:Library=D\:\\Program Files(x86)\\Tomcat\\apache-tomcat-7.0.70\\webapps\\Library
+org.eclipse.jst.jee.server\:library1.0=D\:\\Program Files(x86)\\Tomcat\\apache-tomcat-7.0.70\\webapps\\library1.0
