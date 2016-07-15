@@ -30,5 +30,6 @@ encoding//src/com/entity=UTF-8
 encoding//src/com/entity/LibSystem.java=UTF-8
 encoding//src/com/entity/User.java=UTF-8
 encoding//src/com/entity/student.java=UTF-8
+encoding//src/com/servlet/UpLoadServlet.java=GBK
 encoding//src/com/util/Utils.java=GBK
 encoding/<project>=UTF-8

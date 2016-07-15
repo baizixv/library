@@ -4,11 +4,16 @@
 		<item value="160" key="DIALOG_Y_ORIGIN"/>
 		<item value="379" key="DIALOG_X_ORIGIN"/>
 	</section>
+	<section name="WORKBENCH_SETTINGS">
+		<list key="ENABLED_TRANSFERS">
+		</list>
+	</section>
 	<section name="ExternalProjectImportWizard">
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\bjf\Desktop\ZH\JD\integrated by ysj 2016-07-15 095009\UpLoadFile3"/>
 			<item value="E:\Workspace2016A\Workspace-S\Git_library_bjf\Library"/>
 			<item value="E:\Workspace2016A\Workspace-S\Git_library_bjf\Library_wt"/>
 			<item value="E:\Workspace2016A\Workspace-S\Git_library_bjf"/>
@@ -17,15 +22,11 @@
 			<item value=""/>
 		</list>
 	</section>
-	<section name="WORKBENCH_SETTINGS">
-		<list key="ENABLED_TRANSFERS">
-		</list>
-	</section>
 	<section name="CleanDialogSettings">
 		<item value="500" key="DIALOG_WIDTH"/>
 		<item value="141" key="DIALOG_Y_ORIGIN"/>
-		<item value="627" key="DIALOG_X_ORIGIN"/>
 		<item value="390" key="DIALOG_HEIGHT"/>
+		<item value="627" key="DIALOG_X_ORIGIN"/>
 		<item value="false" key="TOGGLE_SELECTED"/>
 	</section>
 </section>

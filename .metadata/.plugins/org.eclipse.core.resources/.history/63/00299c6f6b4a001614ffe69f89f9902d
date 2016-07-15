@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>zhouqiangWeb</display-name>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.html</welcome-file>
+	
+	</welcome-file-list>
+	<servlet>
+		<servlet-name>SearchBook</servlet-name>
+		<servlet-class>com.servlet.SearchBookServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>SearchBorrow</servlet-name>
+		<servlet-class>com.servlet.SearchBorrowServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>SearchBorrowRecord</servlet-name>
+		<servlet-class>com.servlet.SearchBorrowRecordServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>LogIn</servlet-name>
+		<servlet-class>com.servlet.LogInServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>Back</servlet-name>
+		<servlet-class>com.servlet.BackServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>BorrowBook</servlet-name>
+		<servlet-class>com.servlet.BorrowServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ModifyUser</servlet-name>
+		<servlet-class>com.servlet.ModifyUserServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>remark</servlet-name>
+		<servlet-class>com.servlet.SubmitCommentServlet</servlet-class>
+	</servlet>
+		<servlet>
+		<servlet-name>OrderBook</servlet-name>
+		<servlet-class>com.servlet.OrderServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>BookServlet</servlet-name>
+		<servlet-class>com.servlet.BookServlet</servlet-class>
+	</servlet>
+
+ <servlet>
+    <servlet-name>ModifyAdmin</servlet-name>
+    <servlet-class>com.servlet.ModifyAdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModifyAdmin</servlet-name>
+    <url-pattern>/ModifyAdmin</url-pattern>
+  </servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>SearchBook</servlet-name>
+		<url-pattern>/SearchBook</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>SearchBorrow</servlet-name>
+		<url-pattern>/SearchBorrow</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>SearchBorrowRecord</servlet-name>
+		<url-pattern>/SearchBorrowRecord</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>LogIn</servlet-name>
+		<url-pattern>/LogIn</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>Back</servlet-name>
+		<url-pattern>/Back</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>BorrowBook</servlet-name>
+		<url-pattern>/BorrowBook</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ModifyUser</servlet-name>
+		<url-pattern>/ModifyUser</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>remark</servlet-name>
+		<url-pattern>/remark</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderBook</servlet-name>
+		<url-pattern>/OrderBook</url-pattern>
+	</servlet-mapping>
+		<servlet-mapping>
+		<servlet-name>BookServlet</servlet-name>
+		<url-pattern>/BookServlet</url-pattern>
+	</servlet-mapping>
+	
+	<!--更新数据库的category表中的记录-->
+  <servlet>
+    <servlet-name>UpdateDataFromCategory</servlet-name>
+    <servlet-class>com.common.UpdateDataFromCategory</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateDataFromCategory</servlet-name>
+    <url-pattern>/UpdateDataFromCategory</url-pattern>
+  </servlet-mapping>
+  
+  <!--插入数据库的category表中的记录-->
+  <servlet>
+    <servlet-name>InsertDataFromCategory</servlet-name>
+    <servlet-class>com.common.InsertDataFromCategory</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InsertDataFromCategory</servlet-name>
+    <url-pattern>/InsertDataFromCategory</url-pattern>
+  </servlet-mapping>
+
+  <!--删除数据库的category表中的记录-->
+  <servlet>
+    <servlet-name>DeleteDataFromCategory</servlet-name>
+    <servlet-class>com.common.DeleteDataFromCategory</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteDataFromCategory</servlet-name>
+    <url-pattern>/DeleteDataFromCategory</url-pattern>
+  </servlet-mapping>
+  
+  <!--从数据库的category表中搜索记录-->
+  <servlet>
+    <servlet-name>SelectDataFromCategory</servlet-name>
+    <servlet-class>com.common.SelectDataFromCategory</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectDataFromCategory</servlet-name>
+    <url-pattern>/SelectDataFromCategory</url-pattern>
+  </servlet-mapping>
+  
+  <!--从数据库的category表中获取记录-->
+  <servlet>
+    <servlet-name>GetDataFromCategory</servlet-name>
+    <servlet-class>com.common.GetDataFromCategory</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetDataFromCategory</servlet-name>
+    <url-pattern>/GetDataFromCategory</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!--更新数据库的user表中的记录-->
+  <servlet>
+    <servlet-name>UpdateDataFromUser</servlet-name>
+    <servlet-class>com.common.UpdateDataFromUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateDataFromUser</servlet-name>
+    <url-pattern>/UpdateDataFromUser</url-pattern>
+  </servlet-mapping>
+
+	<!--插入数据库的user表中的记录-->
+  <servlet>
+    <servlet-name>InsertDataFromUser</servlet-name>
+    <servlet-class>com.common.InsertDataFromUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InsertDataFromUser</servlet-name>
+    <url-pattern>/InsertDataFromUser</url-pattern>
+  </servlet-mapping>
+
+<!--删除数据库的user表中的记录-->
+  <servlet>
+    <servlet-name>DeleteDataFromUser</servlet-name>
+    <servlet-class>com.common.DeleteDataFromUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteDataFromUser</servlet-name>
+    <url-pattern>/DeleteDataFromUser</url-pattern>
+  </servlet-mapping>
+
+  <!--从数据库的user表中搜索记录-->
+  <servlet>
+    <servlet-name>SelectDataFromUser</servlet-name>
+    <servlet-class>com.common.SelectDataFromUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectDataFromUser</servlet-name>
+    <url-pattern>/SelectDataFromUser</url-pattern>
+  </servlet-mapping>
+
+  <!--从数据库的user表中获取记录-->
+  <servlet>
+    <servlet-name>GetDataFromUser</servlet-name>
+    <servlet-class>com.common.GetDataFromUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetDataFromUser</servlet-name>
+    <url-pattern>/GetDataFromUser</url-pattern>
+  </servlet-mapping>
+  
+   	<!--批量导入-->
+	<servlet>
+    	<servlet-name>GetDataFromUser</servlet-name>
+    	<servlet-class>com.common.GetDataFromUser</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+    	<servlet-name>GetDataFromUser</servlet-name>
+    	<url-pattern>/GetDataFromUser</url-pattern>
+  	</servlet-mapping>
+	
+</web-app>

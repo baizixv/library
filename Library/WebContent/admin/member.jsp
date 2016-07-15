@@ -1,10 +1,11 @@
-<!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+</html>
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>jqGrid - Ace Admin</title>
+		<title>会员管理 |图书馆管理系统</title>
 
 		<meta name="description" content="Dynamic tables and grids using jqGrid plugin" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -329,10 +330,10 @@
 						</li>
 
 						<li class="light-blue">
-                        
+
 							<a href="/Library/admin/login.jsp">
 								<img class="nav-user-photo" src="/Library/assets/avatars/user.jpg" alt="Jason's Photo" />登录<i class="ace-icon fa fa-caret-down"></i>
-						</a>	
+						</a>
 					  </li>
 					</ul>
 				</div>
@@ -427,7 +428,7 @@
 								</a>
 
 								<b class="arrow"></b>
-							</li>   
+							</li>
 						</ul>
 					</li>
 
@@ -436,7 +437,7 @@
 							<i class="menu-icon fa fa-file-o"></i>图书管理<b class="arrow"></b>
 						</a>
 
-						<b class="arrow"></b>			
+						<b class="arrow"></b>
 					</li>
 
 					<li class="">
@@ -445,7 +446,7 @@
 
 						<b class="arrow"></b>
 					</li>
-									
+
 					<li class="">
 						<a href="/Library/admin/information.jsp">
 							<i class="menu-icon fa fa-calendar"></i>
@@ -457,13 +458,13 @@
 						</a>
 
 						<b class="arrow"></b>
-					</li>				
+					</li>
 					<li class="">
 						<a href="/Library/admin/system.jsp">
 							<i class="menu-icon fa fa-list-alt"></i>系统设置</a>
 
 						<b class="arrow"></b>
-					</li>	
+					</li>
 						</ul>
 					</li>
 				</ul><!-- /.nav-list -->
@@ -493,7 +494,7 @@
 							<li>
 								<a href="#">会员管理</a>
 							</li>
-						
+
 						</ul><!-- /.breadcrumb -->
 
 						<div class="nav-search" id="nav-search">
@@ -583,9 +584,22 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
+								<!-- 批量上传功能实现 -->
 								<div class="alert alert-info">
-									 <button class="btn btn-info" type="button" value="批量添加">批量添加<i class="ace-icon fa fa-check bigger-110"></i> </button>
+										<form id = "form_upload" action="UpLoadServlet" method="post" enctype="multipart/form-data">
+									 		<div class="btn btn-info">
+									 			<label>批量添加</label><i class="ace-icon fa fa-check bigger-110"></i>
+									 			<input id = "file_upload" type="file" name = "file" value="批量添加" onchange ="fileSelected();" style="cursor:pointer;opacity:0;position: absolute;left:0px;top:0px;">
+									 		</div>
+									 		<div style="display:inline;width:200px;height:79px;color:red;position:relative;">
+									 			<div id="fileName" style="display:inline;"></div>
+    											<div id="fileSize" style="display:inline;"></div>
+    											<div id="fileType" style="display:inline;"></div>
+    											<div id="yes_button" style="display:inline;"></div>
+    										</div>
+    										<div id="progressNumber"></div>
 
+										</form>
 								</div>
 
 								<table id="grid-table"></table>
@@ -648,10 +662,62 @@
 
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
+			//批量导入，显示文件属性以及上传
+			function fileSelected() {
+	        	var file = document.getElementById('file_upload').files[0];
+	        	if (file) {
+	          		var fileSize = 0;
+	         	 	if (file.size > 1024 * 1024)
+	            		fileSize = (Math.round(file.size * 100 / (1024 * 1024)) / 100).toString() + 'MB';
+	          		else
+	            		fileSize = (Math.round(file.size * 100 / 1024) / 100).toString() + 'KB';
+	          			document.getElementById('fileName').innerHTML = '文件名: ' + file.name;
+	          			document.getElementById('fileSize').innerHTML = '文件大小: ' + fileSize;
+	          			document.getElementById('fileType').innerHTML = '文件类型: ' + file.type;
+	          			document.getElementById('yes_button').innerHTML =
+	          			'<input type="button" onclick="uploadFile()" value="上传" class="btn btn-info" style = "background:white;border-radius:15px;"/>';
+
+
+	       		}
+	      	}
+
+	      	function uploadFile() {
+        		var fd = new FormData();
+        		fd.append("file_upload", document.getElementById('file_upload').files[0]);
+        		var xhr = new XMLHttpRequest();
+        		xhr.upload.addEventListener("progress", uploadProgress, false);
+        		xhr.addEventListener("load", uploadComplete, false);
+        		xhr.addEventListener("error", uploadFailed, false);
+        		xhr.addEventListener("abort", uploadCanceled, false);
+        		xhr.open("POST", "../UpLoadServlet");
+        		xhr.send(fd);
+      		}
+
+      		function uploadProgress(evt) {
+        		if (evt.lengthComputable) {
+          			var percentComplete = Math.round(evt.loaded * 100 / evt.total);
+          			document.getElementById('progressNumber').innerHTML = percentComplete.toString() + '%';
+        		}else {
+          			document.getElementById('progressNumber').innerHTML = 'unable to compute';
+        		}
+      		}
+
+      		function uploadComplete(evt) {
+        	/* 服务器端返回响应时候触发event事件*/
+        		alert(evt.target.responseText);
+      		}
+      		function uploadFailed(evt) {
+        		alert("尝试上传文件中发生未知错误！");
+      		}
+      		function uploadCanceled(evt) {
+        		alert("由于浏览器断开连接或用户取消，导致文件未上传成功！");
+      		}
+
+
 			jQuery(function($) {
 				var grid_selector = "#grid-table";
 				var pager_selector = "#grid-pager";
-				
+
 				//resize to fit page size
 				$(window).on('resize.jqGrid', function () {
 					$(grid_selector).jqGrid( 'setGridWidth', $(".page-content").width() );
@@ -666,7 +732,7 @@
 						}, 0);
 					}
 			    })
-				
+
 				//if your grid is inside another element, for example a tab pane, you should use its parent's width:
 				/**
 				$(window).on('resize.jqGrid', function () {
@@ -681,11 +747,11 @@
 				  }
 				})
 				*/
-				
-				
-			
-			
-			
+
+
+
+
+
 				jQuery(grid_selector).jqGrid({
 					url: '../GetDataFromUser',
 					datatype: "json",
@@ -697,41 +763,41 @@
 						{name:'name',index:'name', width:150,editable: true,editoptions:{size:"20",maxlength:"30"}},
 						{name:'TypeOfCard',index:'TypeOfCard', width:70, editable: true,edittype:"select",editoptions: {value:"学生:stu;老师:tea"}},
 						{name:'sex',index:'sex', width:90, editable: true,edittype:"select",editoptions: {value:"男:male;女:female"}},
-						{name:'money_Reserved',index:'money_Reserved', width:150, sortable:false,editable: true} 
-					], 
-			
+						{name:'money_Reserved',index:'money_Reserved', width:150, sortable:false,editable: true}
+					],
+
 					viewrecords : true,
 					rowNum:10,
 					rowList:[10,20,30],
 					pager : pager_selector,
 					altRows: true,
 					//toppager: true,
-					
+
 					//multiselect: true,
 					//multikey: "ctrlKey",
 			        //multiboxonly: true,
-			
+
 					loadComplete : function() {
 						var table = this;
 						setTimeout(function(){
 							styleCheckbox(table);
-							
+
 							updateActionIcons(table);
 							updatePagerIcons(table);
 							enableTooltips(table);
 						}, 0);
 					},
-			
+
 					//editurl: "/dummy.jsp",//nothing is saved
 					caption: "会员信息"
-			
+
 					//,autowidth: true,
-			
-			
+
+
 					/**
 					,
-					grouping:true, 
-					groupingView : { 
+					grouping:true,
+					groupingView : {
 						 groupField : ['name'],
 						 groupDataSorted : true,
 						 plusicon : 'fa fa-chevron-down bigger-110',
@@ -739,17 +805,17 @@
 					},
 					caption: "Grouping"
 					*/
-			
+
 				});
 				$(window).triggerHandler('resize.jqGrid');//trigger window resize to make the grid get the correct size
-				
-				
-			
+
+
+
 				//enable search/filter toolbar
 				//jQuery(grid_selector).jqGrid('filterToolbar',{defaultSearch:true,stringResult:true})
 				//jQuery(grid_selector).filterToolbar({});
-			
-			
+
+
 				//switch element when editing inline
 				function aceSwitch( cellvalue, options, cell ) {
 					setTimeout(function(){
@@ -762,11 +828,11 @@
 				function pickDate( cellvalue, options, cell ) {
 					setTimeout(function(){
 						$(cell) .find('input[type=text]')
-								.datepicker({format:'yyyy-mm-dd' , autoclose:true}); 
+								.datepicker({format:'yyyy-mm-dd' , autoclose:true});
 					}, 0);
 				}
-			
-			
+
+
 				//navButtons
 				jQuery(grid_selector).jqGrid('navGrid',pager_selector,
 					{ 	//navbar options
@@ -823,10 +889,10 @@
 						beforeShowForm : function(e) {
 							var form = $(e[0]);
 							if(form.data('styled')) return false;
-							
+
 							form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
 							style_delete_form(form);
-							
+
 							form.data('styled', true);
 						},
 						onclickSubmit : function(e) {
@@ -861,37 +927,37 @@
 						}
 					}
 				)
-			
-			
-				
+
+
+
 				function style_edit_form(form) {
 					//enable datepicker on "sdate" field and switches for "stock" field
 					form.find('input[name=sdate]').datepicker({format:'yyyy-mm-dd' , autoclose:true})
-					
+
 					form.find('input[name=stock]').addClass('ace ace-switch ace-switch-5').after('<span class="lbl"></span>');
 							   //don't wrap inside a label element, the checkbox value won't be submitted (POST'ed)
 							  //.addClass('ace ace-switch ace-switch-5').wrap('<label class="inline" />').after('<span class="lbl"></span>');
-			
-							
+
+
 					//update buttons classes
 					var buttons = form.next().find('.EditButton .fm-button');
 					buttons.addClass('btn btn-sm').find('[class*="-icon"]').hide();//ui-icon, s-icon
 					buttons.eq(0).addClass('btn-primary').prepend('<i class="ace-icon fa fa-check"></i>');
 					buttons.eq(1).prepend('<i class="ace-icon fa fa-times"></i>')
-					
+
 					buttons = form.next().find('.navButton a');
 					buttons.find('.ui-icon').hide();
 					buttons.eq(0).append('<i class="ace-icon fa fa-chevron-left"></i>');
-					buttons.eq(1).append('<i class="ace-icon fa fa-chevron-right"></i>');		
+					buttons.eq(1).append('<i class="ace-icon fa fa-chevron-right"></i>');
 				}
-			
+
 				function style_delete_form(form) {
 					var buttons = form.next().find('.EditButton .fm-button');
 					buttons.addClass('btn btn-sm btn-white btn-round').find('[class*="-icon"]').hide();//ui-icon, s-icon
 					buttons.eq(0).addClass('btn-danger').prepend('<i class="ace-icon fa fa-trash-o"></i>');
 					buttons.eq(1).addClass('btn-default').prepend('<i class="ace-icon fa fa-times"></i>')
 				}
-				
+
 				function style_search_filters(form) {
 					form.find('.delete-rule').val('X');
 					form.find('.add-rule').addClass('btn btn-xs btn-primary');
@@ -905,25 +971,25 @@
 					buttons.find('.EditButton a[id*="_query"]').addClass('btn btn-sm btn-inverse').find('.ui-icon').attr('class', 'ace-icon fa fa-comment-o');
 					buttons.find('.EditButton a[id*="_search"]').addClass('btn btn-sm btn-purple').find('.ui-icon').attr('class', 'ace-icon fa fa-search');
 				}
-				
+
 				function beforeDeleteCallback(e) {
 					var form = $(e[0]);
 					if(form.data('styled')) return false;
-					
+
 					form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
 					style_delete_form(form);
-					
+
 					form.data('styled', true);
 				}
-				
+
 				function beforeEditCallback(e) {
 					var form = $(e[0]);
 					form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
 					style_edit_form(form);
 				}
-			
-			
-			
+
+
+
 				//it causes some flicker when reloading or navigating grid
 				//it may be possible to have some custom formatter to do this as the grid is being created to prevent this
 				//or go back to default browser checkbox styles for the grid
@@ -932,20 +998,20 @@
 					$(table).find('input:checkbox').addClass('ace')
 					.wrap('<label />')
 					.after('<span class="lbl align-top" />')
-			
-			
+
+
 					$('.ui-jqgrid-labels th[id*="_cb"]:first-child')
 					.find('input.cbox[type=checkbox]').addClass('ace')
 					.wrap('<label />').after('<span class="lbl align-top" />');
 				*/
 				}
-				
-			
+
+
 				//unlike navButtons icons, action icons in rows seem to be hard-coded
 				//you can change them like this in here if you want
 				function updateActionIcons(table) {
 					/**
-					var replacement = 
+					var replacement =
 					{
 						'ui-ace-icon fa fa-pencil' : 'ace-icon fa fa-pencil blue',
 						'ui-ace-icon fa fa-trash-o' : 'ace-icon fa fa-trash-o red',
@@ -959,10 +1025,10 @@
 					})
 					*/
 				}
-				
+
 				//replace icons with FontAwesome icons like above
 				function updatePagerIcons(table) {
-					var replacement = 
+					var replacement =
 					{
 						'ui-icon-seek-first' : 'ace-icon fa fa-angle-double-left bigger-140',
 						'ui-icon-seek-prev' : 'ace-icon fa fa-angle-left bigger-140',
@@ -972,18 +1038,18 @@
 					$('.ui-pg-table:not(.navtable) > tbody > tr > .ui-pg-button > .ui-icon').each(function(){
 						var icon = $(this);
 						var $class = $.trim(icon.attr('class').replace('ui-icon', ''));
-						
+
 						if($class in replacement) icon.attr('class', 'ui-icon '+replacement[$class]);
 					})
 				}
-			
+
 				function enableTooltips(table) {
 					$('.navtable .ui-pg-button').tooltip({container:'body'});
 					$(table).find('.ui-pg-div').tooltip({container:'body'});
 				}
-			
+
 				//var selr = jQuery(grid_selector).jqGrid('getGridParam','selrow');
-			
+
 				$(document).one('ajaxloadstart.page', function(e) {
 					$(grid_selector).jqGrid('GridUnload');
 					$('.ui-jqdialog').remove();

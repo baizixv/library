@@ -208,5 +208,15 @@
     <servlet-name>GetDataFromUser</servlet-name>
     <url-pattern>/GetDataFromUser</url-pattern>
   </servlet-mapping>
+  
+   	<!--批量导入-->
+	<servlet>
+    	<servlet-name>UpLoadServlet</servlet-name>
+    	<servlet-class>com.servlet.UpLoadServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+    	<servlet-name>UpLoadServlet</servlet-name>
+    	<url-pattern>/UpLoadServlet</url-pattern>
+  	</servlet-mapping>
 	
 </web-app>
