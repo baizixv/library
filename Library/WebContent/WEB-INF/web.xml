@@ -85,7 +85,7 @@
 	
 	<servlet-mapping>
 		<servlet-name>Back</servlet-name>
-		<url-pattern>/return_book</url-pattern>
+		<url-pattern>/Back</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>BorrowBook</servlet-name>

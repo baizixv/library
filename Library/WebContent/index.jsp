@@ -1,16 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
 <%@page import="java.sql.ResultSet" import="com.entity.*" import="java.sql.SQLException" import="java.sql.Statement" import="com.test.LibConnection"%>
 	<%! Ranking rank=new Ranking();
 		ResultSet remark=null;
 		ResultSet user=null;
 		ResultSet book=null;
 	%>	
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -22,22 +17,22 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
         <link href="/Library/assets/css/base.css" type="text/css" rel="stylesheet" />
 
-<style type="text/css">
-/* search */
-.search{border:2px solid #f58400;height:35px;margin:40px auto 0 auto;width:525px;}
-.search select{display:none;}
-.search .select_box{font-size:12px;color:#999999;width:100px;line-height:35px;float:left;position:relative;}
-.search .select_showbox{height:35px;background:url(images/search_ico.png) no-repeat 80px center;text-indent:1.5em;}
-.search .select_showbox.active{background:url(images/search_ico_hover.png) no-repeat 80px center;}
-.search .select_option{border:2px solid #f58400;border-top:none;display:none;left:-2px;top:35px;position:absolute;z-index:99;background:#fff;}
-.search .select_option li{text-indent:1.5em;width:90px;cursor:pointer;}
-.search .select_option li.selected{background-color:#F3F3F3;color:#999;}
-.search .select_option li.hover{background:#BEBEBE;color:#fff;}
+		<style type="text/css">
+			/* search */
+			.search{border:2px solid #f58400;height:35px;margin:40px auto 0 auto;width:525px;}
+			.search select{display:none;}
+			.search .select_box{font-size:12px;color:#999999;width:100px;line-height:35px;float:left;position:relative;}
+			.search .select_showbox{height:35px;background:url(images/search_ico.png) no-repeat 80px center;text-indent:1.5em;}
+			.search .select_showbox.active{background:url(images/search_ico_hover.png) no-repeat 80px center;}
+			.search .select_option{border:2px solid #f58400;border-top:none;display:none;left:-2px;top:35px;position:absolute;z-index:99;background:#fff;}
+			.search .select_option li{text-indent:1.5em;width:90px;cursor:pointer;}
+			.search .select_option li.selected{background-color:#F3F3F3;color:#999;}
+			.search .select_option li.hover{background:#BEBEBE;color:#fff;}
 
-.search input.inp_srh,.search input.btn_srh{border:none;background:none;height:35px;line-height:35px;float:left}
-.search input.inp_srh{outline:none;width:365px;}
-.search input.btn_srh{background:#f58400;color:#FFF;font-family:"微软雅黑";font-size:15px;width:60px;}
-</style>
+			.search input.inp_srh,.search input.btn_srh{border:none;background:none;height:35px;line-height:35px;float:left}
+			.search input.inp_srh{outline:none;width:365px;}
+			.search input.btn_srh{background:#f58400;color:#FFF;font-family:"微软雅黑";font-size:15px;width:60px;}
+		</style>
 		<!-- bootstrap & fontawesome -->
 		<link rel="stylesheet" href="/Library/assets/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="/Library/assets/font-awesome/4.2.0/css/font-awesome.min.css" />
@@ -415,18 +410,14 @@
 
 
 					<li class="">
-						<a href="/Library//hot.jsp">
-							<i class="menu-icon fa fa-file-o"></i>热搜榜<b class="arrow"></b>
+						<a href="/Library/hot.jsp">
+							<i class="menu-icon fa fa-file-o"></i>风云榜<b class="arrow"></b>
 						</a>
 
 						<b class="arrow"></b>			
 					</li>
-
-					
 						
-						</ul>
-					</li>
-				</ul><!-- /.nav-list -->
+				</ul>
 
 				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
 					<i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
@@ -654,7 +645,7 @@
 											<div class="widget-header widget-header-flat">
 												<h4 class="widget-title lighter">
 													<i class="ace-icon fa fa-star orange"></i>
-								热搜榜
+													风云榜
 												</h4>
 
 												<div class="widget-toolbar">

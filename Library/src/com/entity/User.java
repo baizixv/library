@@ -7,7 +7,6 @@ import java.sql.*;
 import java.util.Calendar;
 import com.test.LibConnection;
 
-
 public class User {
 	public int cardID;
 	static Connection connection = null;
@@ -62,7 +61,6 @@ public class User {
 		return betweenDays;
 	}
 
-	
 	public void submitComment(int index, String remark) {
 		// 提交评论
 		Statement sta = null;
@@ -77,23 +75,24 @@ public class User {
 				+ ",'" + remark + "','" + date + "' )";
 		try {
 			sta.execute(sql);
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 	}
-	
+
 	/**
 	 * 用于判断目标是学生还是老师,已经测试通过
-	 * @param StudentID 
+	 * 
+	 * @param StudentID
 	 * @return res 返回3种形的字符串，stu/tea/other,表示3种类型的身份
 	 * @author YSJ
 	 */
-	public static String StuOrTeacher(int StudentID){
-		String res=null;
-		String sql = "SELECT TypeOfCard from user where StudentID="+StudentID;
+	public static String StuOrTeacher(int StudentID) {
+		String res = null;
+		String sql = "SELECT TypeOfCard from user where StudentID=" + StudentID;
 		Statement sta = null;
 		try {
 			sta = connection.createStatement();
@@ -104,29 +103,31 @@ public class User {
 		ResultSet rs = null;
 		try {
 			rs = sta.executeQuery(sql);
-			while(rs.next()){
-				res= rs.getString(1);
+			while (rs.next()) {
+				res = rs.getString(1);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
 		return res;
 	}
-	
+
 	/**
 	 * 五个参数来共同完成一次打分
+	 * 
 	 * @author dxr (modified by ysj)
 	 * @param index
 	 * @param id
 	 * @param score
 	 * @param comment_teacher
-	 * @param date 打分日期
+	 * @param date
+	 *            打分日期
 	 */
-	public static void updateTeacherScore(int com_index, int comment_stu,String com_date, int score, int comment_teacher) {
-		//这个学生对这本书在date时候的评价(date可以区分同一同学对同一本书的不同评价)，然后老师需要老师的ID和score
+	public static void updateTeacherScore(int com_index, int comment_stu, String com_date, int score,
+			int comment_teacher) {
+		// 这个学生对这本书在date时候的评价(date可以区分同一同学对同一本书的不同评价)，然后老师需要老师的ID和score
 		Statement sta = null;
 		try {
 			sta = connection.createStatement();
@@ -135,7 +136,8 @@ public class User {
 			e1.printStackTrace();
 		}
 		String sql = "UPDATE comment SET score= " + score + "AND comment_teacher= " + comment_teacher
-				+ " WHERE com_index= " + com_index + " and comment_stu= " + comment_stu+ " and com_date='"+com_date+"'";
+				+ " WHERE com_index= " + com_index + " and comment_stu= " + comment_stu + " and com_date='" + com_date
+				+ "'";
 		boolean rs = true;
 		try {
 			rs = sta.execute(sql);
@@ -166,46 +168,57 @@ public class User {
 		}
 		return rs;
 	}
-	
+
+	/**
+	 * @author DXR
+	 * @param name
+	 * @param sex
+	 * @param stuID
+	 * @param tel
+	 * @param password
+	 */
+	public void updateUser( String tel) {
+		Statement sta = null;
+		try {
+			sta = connection.createStatement();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		String sql = "update user set telephone=" + tel
+				+  " where cardID=" + cardID;
+		try {
+			sta.execute(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	/**
+	 * @author DXR
+	 * @return
+	 */
 	public ResultSet getUserName() {
 		// 获得用户姓名
 		Statement sta = null;
 		try {
-		sta = connection.createStatement();
+			sta = connection.createStatement();
 		} catch (SQLException e1) {
-		// TODO Auto-generated catch block
-		e1.printStackTrace();
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		String sql = "SELECT name FROM user where cardID=" + cardID;
 		ResultSet rs = null;
 		try {
-		rs = sta.executeQuery(sql);
+			rs = sta.executeQuery(sql);
 		} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
 		return rs;
 	}
-
-	public void updateUser(String name, String sex, int stuID,String tel,String password) {
-		Statement sta = null;
-		try {
-		sta = connection.createStatement();
-		} catch (SQLException e1) {
-		// TODO Auto-generated catch block
-		e1.printStackTrace();
-		}
-		String sql = "update user set NAME='" + name + "',sex='" + sex + "',studentID=" + stuID + ",telephone=" + tel +",password=" + password +" where cardID=" + cardID;
-		try {
-		sta.execute(sql);
-		} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-		}
-
-		}
-
 
 	public ResultSet getUserComment() {
 		// 通过id查询评论
@@ -228,15 +241,17 @@ public class User {
 		return rs;
 	}
 
-	public void updateUserPwd(String pwd) {
+	public void updateUserPwd(String pwd_str) {
 		Statement sta = null;
+		int pwd = Integer.parseInt(pwd_str);
 		try {
 			sta = connection.createStatement();
+			
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		String sql = "update user set password=" + pwd + "s where cardID=" + cardID;
+		String sql = "update user set password="+ pwd +" where cardID=" + cardID;
 		try {
 			System.out.println(pwd);
 			sta.execute(sql);
@@ -462,8 +477,8 @@ public class User {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-//		System.out.println("aaaa+:"+StuOrTeacher(123456));测试
+
+		// System.out.println("aaaa+:"+StuOrTeacher(123456));测试
 		// cardID = 223;
 		// User user = new User(cardID);
 		// String bookname = null;
@@ -478,5 +493,10 @@ public class User {
 		// e.printStackTrace();
 		// }
 		//
+	}
+
+	public void updateUser1(String string) {
+		// TODO Auto-generated method stub
+		
 	}
 }

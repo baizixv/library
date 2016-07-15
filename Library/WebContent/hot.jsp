@@ -1,18 +1,17 @@
-﻿<!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-	
-<html lang="en">
-	<head>
-	<%@page import="java.sql.ResultSet" import="com.entity.*" import="java.sql.SQLException" import="java.sql.Statement" import="com.test.LibConnection"%>
+<%@page import="java.sql.ResultSet" import="com.entity.*" import="java.sql.SQLException" import="java.sql.Statement" import="com.test.LibConnection"%>
 	<%! Ranking rank=new Ranking();
 		ResultSet remark=null;
 		ResultSet user=null;
 		ResultSet book=null;
 	%>	
+<!DOCTYPE html>	
+<html lang="en">
+	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>FAQ - Ace Admin</title>
+		<title>风云榜&nbsp;|&nbsp;图书馆管理系统</title>
 
 		<meta name="description" content="frequently asked questions using tabs and accordions" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -71,7 +70,7 @@
 					<a href="/Library/index.jsp" class="navbar-brand">
 						<small>
 							<i class="fa fa-leaf"></i>
-							Ace Admin
+							图书馆管理系统
 						</small>
 					</a>
 				</div>

@@ -32,10 +32,10 @@ public class ModifyUserServlet extends HttpServlet{
 		String stu_ID =  request.getParameter("stu_ID");
 		String pwd =  request.getParameter("pwd");
 		
-		System.out.println(name);
+		System.out.println(pwd);
 		
 		if(name!=""&&sex!=""&&tel!=""&&stu_ID!=""){
-			user.updateUser(name, sex, Integer.parseInt(stu_ID), tel,pwd);
+			user.updateUser(tel);
 		}
 //		if(name!=null){
 //			user.updateUsername(name);

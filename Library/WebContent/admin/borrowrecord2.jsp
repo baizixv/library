@@ -676,10 +676,16 @@
 												</td>
 												
 												<td class="hidden-480">
-														<button class="btn btn-info" type="button" value="还书"
-							onclick="BookBack()">
-							还书<i class="ace-icon fa fa-check bigger-110"></i>
-						</button>
+														<form class="form-horizontal" role="form" method="post"
+								action="Back">
+														<input type="hidden" name="bookid" value=<%=bookid%> />
+														<input type="hidden" name="cardid" value=<%=cardid%> />
+
+
+														<input type="submit" class="btn btn-info" value="还书" ><i class="ace-icon fa fa-check bigger-110"></i>
+														</input>
+													</form>
+
 						</td>
 						
 						<script>
