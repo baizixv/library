@@ -2,7 +2,7 @@
 /**
  * jqGrid English Translation
  * Tony Tomov tony@trirand.com
- * http://trirand.com/blog/ 
+ * http://trirand.com/blog/
  * Dual licensed under the MIT and GPL licenses:
  * http://www.opensource.org/licenses/mit-license.php
  * http://www.gnu.org/licenses/gpl.html
@@ -10,30 +10,35 @@
 $.jgrid = $.jgrid || {};
 $.extend($.jgrid,{
 	defaults : {
-		recordtext: "View {0} - {1} of {2}",
-		emptyrecords: "No records to view",
+		recordtext: "{0} - {1}&nbsp;&nbsp;共&nbsp;{2}&nbsp;条",
+		emptyrecords: "没有记录",
 		loadtext: "Loading...",
-		pgtext : "Page {0} of {1}"
+		pgtext : "{0}&nbsp;&nbsp;共&nbsp;{1}&nbsp;页"
 	},
 	search : {
-		caption: "Search...",
-		Find: "Find",
-		Reset: "Reset",
-		odata: [{ oper:'eq', text:'equal'},{ oper:'ne', text:'not equal'},{ oper:'lt', text:'less'},{ oper:'le', text:'less or equal'},{ oper:'gt', text:'greater'},{ oper:'ge', text:'greater or equal'},{ oper:'bw', text:'begins with'},{ oper:'bn', text:'does not begin with'},{ oper:'in', text:'is in'},{ oper:'ni', text:'is not in'},{ oper:'ew', text:'ends with'},{ oper:'en', text:'does not end with'},{ oper:'cn', text:'contains'},{ oper:'nc', text:'does not contain'},{ oper:'nu', text:'is null'},{ oper:'nn', text:'is not null'}],
-		groupOps: [{ op: "AND", text: "all" },{ op: "OR",  text: "any" }],
-		operandTitle : "Click to select search operation.",
-		resetTitle : "Reset Search Value"
+		caption: "查询...",
+		Find: "查询",
+		Reset: "重置条件",
+		odata: [{ oper:'eq', text:'等于'},{ oper:'ne', text:'不等于'}],
+		/*
+		*	odata: [{ oper:'eq', text:'等于'},{ oper:'ne', text:'不等于'},{ oper:'lt',
+		*	text:'小于'},{ oper:'le', text:'小于或等于'},{ oper:'gt', text:'大于'},{ oper:'ge',
+		*	text:'大于或等于'},{ oper:'bw', text:'开始于'},{ oper:'bn', text:'不开始于'},{ oper:'in', text:'在其中'},{ oper:'ni', text:'不在其中'},{ oper:'ew', text:'结束于'},{ oper:'en', text:'不结束于'},{ oper:'cn', text:'包含'},{ oper:'nc', text:'不包含'},{ oper:'nu', text:'空值'},{ oper:'nn', text:'非空'}],
+			groupOps: [{ op: "AND", text: "且" },{ op: "OR",  text: "或" }],
+			operandTitle : "选择搜索操作",
+			resetTitle : "重置查询条件"
+		*/
 	},
 	edit : {
-		addCaption: "Add Record",
-		editCaption: "Edit Record",
-		bSubmit: "Submit",
-		bCancel: "Cancel",
-		bClose: "Close",
-		saveData: "Data has been changed! Save changes?",
+		addCaption: "增添记录",
+		editCaption: "修改记录",
+		bSubmit: "保存",
+		bCancel: "取消",
+		bClose: "关闭",
+		saveData: "数据已经改变",
 		bYes : "Yes",
 		bNo : "No",
-		bExit : "Cancel",
+		bExit : "取消",
 		msg: {
 			required:"Field is required",
 			number:"Please, enter valid number",
@@ -47,7 +52,7 @@ $.extend($.jgrid,{
 			novalue : " return value is required!",
 			customarray : "Custom function should return array!",
 			customfcheck : "Custom function should be present in case of custom checking!"
-			
+
 		}
 	},
 	view : {
@@ -55,26 +60,26 @@ $.extend($.jgrid,{
 		bClose: "Close"
 	},
 	del : {
-		caption: "Delete",
-		msg: "Delete selected record(s)?",
-		bSubmit: "Delete",
-		bCancel: "Cancel"
+		caption: "删除记录",
+		msg: "是否删除记录?",
+		bSubmit: "确定",
+		bCancel: "取消"
 	},
 	nav : {
 		edittext: "",
-		edittitle: "Edit selected row",
+		edittitle: "修改选择的记录",
 		addtext:"",
-		addtitle: "Add new row",
+		addtitle: "增添一条新纪录",
 		deltext: "",
-		deltitle: "Delete selected row",
+		deltitle: "删除选择的记录",
 		searchtext: "",
-		searchtitle: "Find records",
+		searchtitle: "查找记录",
 		refreshtext: "",
-		refreshtitle: "Reload Grid",
-		alertcap: "Warning",
-		alerttext: "Please, select row",
+		refreshtitle: "刷新",
+		alertcap: "警告",
+		alerttext: "请选择一条记录",
 		viewtext: "",
-		viewtitle: "View selected row"
+		viewtitle: "查看选择记录的信息"
 	},
 	col : {
 		caption: "Select columns",
