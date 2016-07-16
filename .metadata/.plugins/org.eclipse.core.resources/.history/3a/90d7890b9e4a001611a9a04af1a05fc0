@@ -1,17 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
 <%@page import="java.sql.ResultSet" import="com.entity.*" import="java.sql.SQLException" import="java.sql.Statement" import="com.test.LibConnection"%>
 	<%! Ranking rank=new Ranking();
 		ResultSet remark=null;
 		ResultSet user=null;
 		ResultSet book=null;
 	%>	
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>管理员&nbsp;|&nbsp;图书馆管理系统</title>
+		<title>图书馆管理系统</title>
 
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />

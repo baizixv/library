@@ -569,7 +569,20 @@
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
 								<div class="alert alert-info">
-									 <button class="btn btn-info" type="button" value="批量添加">批量添加<i class="ace-icon fa fa-check bigger-110"></i> </button>
+									 <form id = "form_upload" action="UpLoadServlet" method="post" enctype="multipart/form-data">
+									 		<div class="btn btn-info">
+									 			<label>批量添加</label><i class="ace-icon fa fa-check bigger-110"></i>
+									 			<input id = "file_upload" type="file" name = "file" value="批量添加" onchange ="fileSelected();" style="cursor:pointer;opacity:0;position: absolute;left:0px;top:0px;">
+									 		</div>
+									 		<div style="display:inline;width:200px;height:79px;color:red;position:relative;">
+									 			<div id="fileName" style="display:inline;"></div>
+    											<div id="fileSize" style="display:inline;"></div>
+    											<div id="fileType" style="display:inline;"></div>
+    											<div id="yes_button" style="display:inline;"></div>
+    										</div>
+    										<div id="progressNumber"></div>
+
+										</form>
 								</div>
 
 								<table id="grid-table"></table>
@@ -634,6 +647,58 @@
 
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
+		//批量导入，显示文件属性以及上传
+		function fileSelected() {
+        	var file = document.getElementById('file_upload').files[0];
+        	if (file) {
+          		var fileSize = 0;
+         	 	if (file.size > 1024 * 1024)
+            		fileSize = (Math.round(file.size * 100 / (1024 * 1024)) / 100).toString() + 'MB';
+          		else
+            		fileSize = (Math.round(file.size * 100 / 1024) / 100).toString() + 'KB';
+          			document.getElementById('fileName').innerHTML = '文件名: ' + file.name;
+          			document.getElementById('fileSize').innerHTML = '文件大小: ' + fileSize;
+          			document.getElementById('fileType').innerHTML = '文件类型: ' + file.type;
+          			document.getElementById('yes_button').innerHTML =
+          			'<input type="button" onclick="uploadFile()" value="上传" class="btn btn-info" style = "background:white;border-radius:15px;"/>';
+
+
+       		}
+      	}
+
+      	function uploadFile() {
+    		var fd = new FormData();
+    		fd.append("file_upload", document.getElementById('file_upload').files[0]);
+    		var xhr = new XMLHttpRequest();
+    		xhr.upload.addEventListener("progress", uploadProgress, false);
+    		xhr.addEventListener("load", uploadComplete, false);
+    		xhr.addEventListener("error", uploadFailed, false);
+    		xhr.addEventListener("abort", uploadCanceled, false);
+    		xhr.open("POST", "../UpLoadServlet");
+    		xhr.send(fd);
+  		}
+
+  		function uploadProgress(evt) {
+    		if (evt.lengthComputable) {
+      			var percentComplete = Math.round(evt.loaded * 100 / evt.total);
+      			document.getElementById('progressNumber').innerHTML = percentComplete.toString() + '%';
+    		}else {
+      			document.getElementById('progressNumber').innerHTML = 'unable to compute';
+    		}
+  		}
+
+  		function uploadComplete(evt) {
+    	/* 服务器端返回响应时候触发event事件*/
+    	alert("文件成功上传！");
+    		//alert(evt.target.responseText);
+  		}
+  		function uploadFailed(evt) {
+    		alert("尝试上传文件中发生未知错误！");
+  		}
+  		function uploadCanceled(evt) {
+    		alert("由于浏览器断开连接或用户取消，导致文件未上传成功！");
+  		}
+
 			jQuery(function($) {
 				var grid_selector = "#grid-table";
 				var pager_selector = "#grid-pager";

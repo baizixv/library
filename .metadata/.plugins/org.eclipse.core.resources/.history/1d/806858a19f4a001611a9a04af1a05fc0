@@ -85,9 +85,9 @@ public class UserDAO {
 
         System.out.println("开始删除记录！！！");
 
-        stmt = LibConnection.getConnection().createStatement();
-        stmt.executeUpdate(sql);
-        System.out.println("删除成功！");
+//        stmt = LibConnection.getConnection().createStatement();
+//        stmt.executeUpdate(sql);
+//        System.out.println("删除成功！");
         System.out.println("不可删除记录！！！因为有外键关联！！！");
         if (stmt != null)
 			extracted(stmt);
