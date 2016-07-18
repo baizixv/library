@@ -52,7 +52,6 @@ public class Utils {
 
 	public static void main(String a[]) {
 		test_readXlsxOrXlsToDB();
-		test_addTextToPic();
 	}
 
 	/**
@@ -264,7 +263,7 @@ public class Utils {
 	}
 
 	public static void test_readXlsxOrXlsToDB() {
-		String fp = "doc/daoru.xlsx";
+		String fp = "doc/daoru.xls";
 		int num = 0;
 		try {
 			if (fp.endsWith("xls")) {
@@ -321,7 +320,7 @@ public class Utils {
 		// 加了字的图
 		String targerPath = "pic/marked.jpg";
 		// 给图片添加字
-		addTextToPic("xxxxxxxxxxx", srcImgPath, targerPath);// 测试OK
+		addTextToPic("李辰的饮酒基因报告", srcImgPath, targerPath);// 测试OK
 		System.out.println("添加文字OK，请检查目录下的图片是否改变");
 	}
 	

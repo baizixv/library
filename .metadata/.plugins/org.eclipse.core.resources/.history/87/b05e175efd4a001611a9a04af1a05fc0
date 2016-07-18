@@ -264,7 +264,7 @@ public class Utils {
 	}
 
 	public static void test_readXlsxOrXlsToDB() {
-		String fp = "doc/daoru.xlsx";
+		String fp = "doc/daoru.xls";
 		int num = 0;
 		try {
 			if (fp.endsWith("xls")) {
